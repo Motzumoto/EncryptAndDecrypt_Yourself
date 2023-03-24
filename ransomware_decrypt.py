@@ -27,7 +27,7 @@ for root, dirs, files in os.walk(directory):
                 with open(filename, "wb") as f:
                     f.write(decrypted_data)
                 print(f"Decrypted {filename}")
-            except:
+            except Exception:
                 print(f"Failed to decrypt {filename}")
         else:
             print(f"Skipping non-file {filename}")

